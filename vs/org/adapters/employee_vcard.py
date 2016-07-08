@@ -7,6 +7,9 @@
 from zope.interface import implements
 from ..interfaces import IVCardData
 import pycountry
+from zope.i18nmessageid import MessageFactory
+
+_iso3166mf = MessageFactory('iso3166')
 
 class EmployeeVCard(object):
     """ 
@@ -80,13 +83,13 @@ class EmployeeVCard(object):
                     # expand country and province codes first
                     country_a2 = o.getCountry()
                     try:
-                        country_name = pycountry.countries.get(alpha2=country_a2).name
+                        country_name = _iso3166mf(pycountry.countries.get(alpha2=country_a2).name)
                     except KeyError:
                         country_name = ''
 
                     province_code = o.getProvince()
                     try:
-                        province_name = pycountry.subdivisions.get(code=province_code).name
+                        province_name = _iso3166mf(pycountry.subdivisions.get(code=province_code).name
                     except KeyError:
                         province_name = ''
 

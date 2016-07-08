@@ -9,6 +9,11 @@
   <include package="archetypes.referencebrowserwidget" />
 
   <i18n:registerTranslations directory="locales" />
+  
+  <configure package="pycountry">    
+    <i18n:registerTranslations directory="locales" />
+  </configure>
+
   <five:registerPackage package="." initialize=".initialize" />
 
   <!-- Include the sub-packages that use their own configure.zcml files. -->
